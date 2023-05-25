@@ -10,14 +10,15 @@ const departButton = document.querySelector(".depart")
 // create Factory Function instance
 
 const taxiQueue = TaxiQueue();
-passengersCounter.innerHTML = 0
-taxiCounter.innerHTML = 0
+passengersCounter.innerHTML = taxiQueue.getLocalStorage("passengerQueue") || 0
+taxiCounter.innerHTML = taxiQueue.getLocalStorage("taxiCounter") || 0
 
 
 // DOM events
 
 joinButton.addEventListener("click", function(){
     taxiQueue.joinQueue()
+    taxiQueue.getLocalStorage("passengerQueue")
     taxiQueue.setLocalStorage("passengerQueue",taxiQueue.queueLength())
     passengersCounter.innerHTML = taxiQueue.getLocalStorage("passengerQueue")
 
@@ -39,8 +40,9 @@ joinQueueButton.addEventListener("click",function(){
 
 departButton.addEventListener("click",function(){
     taxiQueue.taxiDepart()
-     taxiQueue.setLocalStorage("depart",)
-     taxiCounter.innerHTML = 
-    passengersCounter.innerHTML = "" 
+     taxiQueue.setLocalStorage("passengerQueue",taxiQueue.queueLength())
+     taxiQueue.setLocalStorage("taxiCounter",taxiQueue.taxiQueueLength() )
+     taxiCounter.innerHTML = taxiQueue.taxiQueueLength()
+    passengersCounter.innerHTML = taxiQueue.queueLength()
 })
 
