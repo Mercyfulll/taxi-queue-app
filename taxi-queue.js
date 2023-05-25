@@ -26,21 +26,25 @@ function TaxiQueue() {
 	}
 
 	function taxiDepart(){
-	 if(peopleCounter = 12){
-		taxi--
-	 }
-	 if(peopleCounter <= 12){
-	 	taxi
+	 if(peopleCounter >= 12 && taxi > 0){
+		peopleCounter = peopleCounter - 12
+		taxi --
+	 	}
 	}
-	return taxi
-}
-
+	function setLocalStorage(key,value) {
+		localStorage.setItem(key,value)
+	}
+	function getLocalStorage(key){
+		return localStorage.getItem(key)
+	}
 	return {
 		joinQueue,
 		leaveQueue,
 		joinTaxiQueue,
 		queueLength,
 		taxiQueueLength,
-		taxiDepart
+		taxiDepart,
+		setLocalStorage,
+		getLocalStorage
 	}
 }

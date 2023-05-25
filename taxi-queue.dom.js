@@ -10,29 +10,37 @@ const departButton = document.querySelector(".depart")
 // create Factory Function instance
 
 const taxiQueue = TaxiQueue();
+passengersCounter.innerHTML = 0
+taxiCounter.innerHTML = 0
+
 
 // DOM events
 
 joinButton.addEventListener("click", function(){
     taxiQueue.joinQueue()
-    localStorage.setItem("passengerQueueIncr",JSON.stringify(taxiQueue.queueLength()))
-    passengersCounter.innerHTML=JSON.parse(localStorage.getItem("passengerQueueIncr"))
+    taxiQueue.setLocalStorage("passengerQueue",taxiQueue.queueLength())
+    passengersCounter.innerHTML = taxiQueue.getLocalStorage("passengerQueue")
+
+
 })
 
 leaveButton.addEventListener("click",function(){
     taxiQueue.leaveQueue()
-    localStorage.setItem("passengerQueueDec",JSON.stringify(taxiQueue.queueLength()))
-    passengersCounter.innerHTML = JSON.parse(localStorage.getItem("passengerQueueDec"))
+    taxiQueue.setLocalStorage("passengerLeave",taxiQueue.queueLength())
+    passengersCounter.innerHTML = taxiQueue.getLocalStorage("passengerLeave")
     
 })
 
 joinQueueButton.addEventListener("click",function(){
     taxiQueue.joinTaxiQueue()
-    localStorage.setItem("taxiCounter",JSON.stringify())
-    taxiCounter.innerHTML = taxiQueue.joinTaxiQueue()
+    taxiQueue.setLocalStorage("taxiCounter",taxiQueue.taxiQueueLength())
+    taxiCounter.innerHTML = taxiQueue.getLocalStorage("taxiCounter")
 })
 
 departButton.addEventListener("click",function(){
-    taxiCounter.innerHTML = taxiQueue.taxiDepart()
+    taxiQueue.taxiDepart()
+     taxiQueue.setLocalStorage("depart",)
+     taxiCounter.innerHTML = 
+    passengersCounter.innerHTML = "" 
 })
 
