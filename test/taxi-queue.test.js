@@ -49,6 +49,8 @@ describe('The taxi queue app', function() {
 	it ('should allow taxis to join the queue', function() {
 		
 		const taxiQueue = TaxiQueue();
+		const taxi = taxiQueue
+
 
 		taxiQueue.joinTaxiQueue();
 		taxiQueue.joinTaxiQueue();
@@ -58,23 +60,23 @@ describe('The taxi queue app', function() {
 
 	});
 
-	// it ('should not allow the taxi queue to be less than 0', function() {
+	it ('should not allow the taxi queue to be less than 0', function() {
 
-	// 	const taxiQueue = TaxiQueue();
+	 	const taxiQueue = TaxiQueue();
 
-	// 	taxiQueue.joinQueue();
-	// 	taxiQueue.joinQueue();
-	// 	taxiQueue.joinQueue();
+	 	taxiQueue.joinQueue();
+	 	taxiQueue.joinQueue();
+	 	taxiQueue.joinQueue();
 
-	// 	taxiQueue.leaveQueue();
-	// 	taxiQueue.leaveQueue();
-	// 	taxiQueue.leaveQueue();
-	// 	taxiQueue.leaveQueue();
-	// 	taxiQueue.leaveQueue();
+		taxiQueue.leaveQueue();
+	 	taxiQueue.leaveQueue();
+	 	taxiQueue.leaveQueue();
+	 	taxiQueue.leaveQueue();
+	 	taxiQueue.leaveQueue();
 
-	// 	assert.equal(0, taxiQueue.queueLength());
+	 	assert.equal(0, taxiQueue.queueLength());
 
-	// });
+	 });
 
 
 	it ('should allow taxis to leave the queue if there is enough passengers queueing', function() {
@@ -102,14 +104,14 @@ describe('The taxi queue app', function() {
 		taxiQueue.joinTaxiQueue();
 
 		// data before a taxi departs
-		assert.equal(3, taxiQueue.queueLength());
-		assert.equal(15, taxiQueue.queueLengthx());
+		assert.equal(3, taxiQueue.taxiQueueLength());
+		assert.equal(15, taxiQueue.queueLength());
 
 		taxiQueue.taxiDepart();
 
 		// data after a taxi departed
-		assert.equal(2, taxiQueue.queueLength());
-		assert.equal(3, taxiQueue.queueLengthx());
+		assert.equal(2, taxiQueue.taxiQueueLength());
+		assert.equal(3, taxiQueue.queueLength());
 		// assert.equal(2, taxiQueue.queueLength());
 
 	});
